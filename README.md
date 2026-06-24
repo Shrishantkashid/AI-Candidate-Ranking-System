@@ -7,7 +7,7 @@ We built a multi-layer AI hiring intelligence system that simulates how modern r
 Instead of ranking candidates purely through resume similarity, our architecture reverse-engineers the real hiring pipeline:
 
 * ATS Screening Simulation
-* Human Recruiter 6-Second Resume Review
+* Human Recruiter First-Pass Resume Review Simulation
 * Technical Production Experience Evaluation
 * Behavioural Hiring Signal Analysis
 * Fraud / Honeypot Candidate Detection
@@ -21,6 +21,27 @@ This architecture is designed not just to rank candidates, but to simulate reali
 ## System Architecture
 
 Our ranking engine follows a multi-stage hiring simulation pipeline.
+
+```mermaid
+graph TD
+    A[Raw Candidate JSONL] --> B[Layer 1: Feature Engineering]
+    B --> C[Layer 2: ATS Simulation Engine]
+    B --> D[Layer 3: Recruiter Review Engine]
+    B --> E[Layer 4: Technical Evaluation]
+    B --> F[Layer 5: Behavioural Signals]
+    B --> G[Layer 6: Fraud Detection]
+    
+    C --> H[Layer 7: Hybrid Ranking Engine]
+    D --> H
+    E --> H
+    F --> H
+    G -- "Honeypot Flag" --> H
+    
+    H --> I[Layer 8: Explainability Engine]
+    I --> J[Top 100 Shortlist CSV]
+    
+    J --> K[Layer 9: Validation & Benchmarking]
+```
 
 **Layer 1 — Candidate Feature Engineering**
 Extract structured signals from raw candidate data including:
@@ -122,6 +143,19 @@ This makes the rankings significantly closer to real-world hiring decisions.
 - **What-If Simulator**: Tweak a candidate's behavioural score or remove specific penalties and instantly observe how their rank jumps in the Top 100.
 - **Export**: Seamlessly download the latest configured `submission.csv` via the sidebar.
 
+## Dashboard Screenshots
+
+- Dashboard Overview
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+- Candidate Spider Chart Comparison
+![alt text](image-4.png)
+
+- What-If Simulator
+![alt text](image-5.png)
+
 ## Installation
 
 ```bash
@@ -174,6 +208,8 @@ Our ranking engine is systematically layered to improve precision in the Top 100
 | **1. ATS Only (Baseline)** | Low | Easily gamed by keyword stuffers; ignores actual production experience. Seniority inversion is common. |
 | **2. ATS + Recruiter** | Medium-High | Reduces keyword stuffers by enforcing evidence checks and career consistency. |
 | **3. ATS + Recruiter + Recency** | High | Solves the "stale experience" problem (e.g., 2017 TensorFlow vs. 2025 PyTorch) via exponential time-decay multipliers. |
-| **4. Final (Architecture + Honeypot)**| **State of the Art** | Guarantees < 0% honeypot inclusion via temporal anomaly detection (e.g., claiming 6 years of LangChain experience). |
+| **4. Final (Architecture + Honeypot)**| **State of the Art** | Significantly reduces risk of honeypot candidate inclusion through temporal anomaly detection. |
 
 *Our final architecture correctly simulates the dual-funnel reality of modern hiring: automated baseline filtering backed by rigorous human-like heuristic scrutiny.*
+
+This project was designed to move candidate ranking beyond traditional ATS keyword matching and toward realistic hiring simulation that mirrors how modern recruiters and hiring teams make decisions in production environments.
