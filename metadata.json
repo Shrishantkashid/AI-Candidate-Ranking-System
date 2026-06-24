@@ -1,0 +1,32 @@
+{
+  "num_candidates": 100000,
+  "generated_at": "2026-06-15T20:36:46.593036+00:00",
+  "columns": [
+    "candidate_id",
+    "title_relevance",
+    "prod_ml_experience_score",
+    "skill_relevance_score",
+    "consulting_only_penalty",
+    "research_only_penalty",
+    "title_hopping_penalty",
+    "langchain_only_penalty",
+    "behavioural_multiplier",
+    "location_penalty",
+    "honeypot_flag",
+    "raw_score",
+    "title_match_keywords",
+    "prod_ml_years",
+    "skill_set_summary",
+    "ats_score",
+    "ats_keyword",
+    "ats_role",
+    "ats_density",
+    "ats_quality",
+    "recruiter_score",
+    "rec_profile",
+    "rec_experience",
+    "rec_evidence",
+    "rec_consistency",
+    "rec_credibility"
+  ]
+}

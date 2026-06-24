@@ -1,0 +1,19 @@
+# Dataset
+[PUB] India_runs_data_and_ai_challenge/
+*.jsonl
+*.jsonl.gz
+*.parquet
+*.csv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Mac junk
+__MACOSX/
+.DS_Store
+
+# Virtual env
+venv/
+myenv/
+app_venv/
